@@ -1,0 +1,73 @@
+.about {
+  position: absolute;
+  inset: 0;
+  padding: 0 var(--pad);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  left: var(--pad);
+  top: 15%;
+
+  margin: 0;
+
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  font-weight: 600;
+  color: var(--mute);
+
+  will-change: transform, opacity;
+}
+
+.lines {
+  display: grid;
+  gap: 0.08em;
+}
+
+.line {
+  margin: 0;
+  width: fit-content;
+  max-width: 100%;
+
+  font-size: clamp(1.6rem, 4vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+
+  will-change: transform, opacity;
+}
+
+.note {
+  margin: clamp(24px, 5vh, 56px) 0 0;
+  max-width: 42ch;
+
+  color: var(--mute);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.55;
+
+  will-change: transform, opacity;
+}
+
+@media (max-width: 899px) {
+  .title {
+    top: 10%;
+  }
+
+  .line {
+    font-size: clamp(1.5rem, 6.8vw, 2.4rem);
+  }
+
+  .lines {
+    gap: 0.4em;
+  }
+}
+
+:global(.reduced) .title,
+:global(.reduced) .line,
+:global(.reduced) .note {
+  opacity: 1;
+  transform: none;
+}

@@ -1,0 +1,15 @@
+.wrap { margin: 0; }
+.svg { width: 100%; height: auto; display: block; overflow: visible; }
+.edge { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.flow { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 10; opacity: 0; transition: opacity 0.4s; animation: run 1.2s linear infinite; }
+.flowOn { opacity: 1; }
+.still { animation: none; }
+@keyframes run { to { stroke-dashoffset: -32; } }
+.node { cursor: none; outline: none; }
+.node rect { fill: var(--ink-1); stroke: var(--line); stroke-width: 1.5; transition: fill 0.3s, stroke 0.3s; }
+.node text { fill: var(--mute); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; transition: fill 0.3s; pointer-events: none; }
+.nodeOn rect { fill: var(--accent); stroke: var(--accent); }
+.nodeOn text { fill: var(--ink-0); }
+.node:focus-visible rect { stroke: var(--paper); stroke-width: 2.5; }
+.caption { margin-top: 18px; display: grid; gap: 4px; font-size: 0.95rem; color: var(--mute); min-height: 3.2em; }
+.caption strong { color: var(--paper); font-weight: 600; }

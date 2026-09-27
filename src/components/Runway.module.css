@@ -1,0 +1,101 @@
+.runway {
+  position: relative;
+
+  height: calc(var(--len) * 1svh);
+
+  /*
+   * Consecutive runways overlap by one viewport.
+   */
+  margin-top: -200svh;
+}
+
+.runway:first-child {
+  margin-top: 0;
+}
+
+.stage {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100svh;
+
+  overflow: hidden;
+
+  /*
+   * Default behavior:
+   *
+   * The runway itself doesn't interfere with pointer interaction.
+   * Individual interactive elements can opt in below.
+   */
+  pointer-events: none;
+}
+
+/*
+ * ------------------------------------------------------------
+ * STANDARD INTERACTIVE ELEMENTS
+ * ------------------------------------------------------------
+ */
+
+.stage :is(
+  a,
+  button,
+  iframe,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [data-hit]
+) {
+  pointer-events: auto;
+}
+
+/*
+ * ------------------------------------------------------------
+ * FULLY INTERACTIVE RUNWAY
+ * ------------------------------------------------------------
+ *
+ * Used by Tech Orbit.
+ *
+ * This is intentionally opt-in because making every runway
+ * interactive would interfere with the site's custom scroll /
+ * transition system.
+ */
+
+.stage.interactive {
+  pointer-events: auto;
+}
+
+/*
+ * Everything inside an interactive stage can receive pointer
+ * events unless a component explicitly disables them.
+ */
+
+.stage.interactive > * {
+  pointer-events: auto;
+}
+
+/*
+ * ------------------------------------------------------------
+ * REDUCED MOTION
+ * ------------------------------------------------------------
+ */
+
+:global(.reduced) .runway {
+  height: auto;
+
+  margin-top: 0;
+}
+
+:global(.reduced) .stage {
+  position: relative;
+
+  height: auto;
+
+  min-height: 100svh;
+
+  overflow: visible;
+
+  pointer-events: auto;
+}

@@ -1,0 +1,27 @@
+.footer {
+  position: relative;
+  z-index: 50;
+  background: var(--ink-0);
+  padding: clamp(20px, 10vw, 20px) var(--pad) 28px;
+  border-top: 1px solid var(--line);
+}
+.name {
+  display: grid;
+  font-size: clamp(2.4rem, 10vw, 8.6rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  color: var(--paper);
+  opacity: 0.94;
+}
+.row {
+  margin-top: clamp(40px, 6vw, 90px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  justify-content: space-between;
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+.row button { color: var(--paper); }
+.row button:hover { color: var(--accent); }

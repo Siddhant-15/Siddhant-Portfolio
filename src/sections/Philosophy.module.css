@@ -1,0 +1,45 @@
+.phil { position: absolute; inset: 0; }
+.title { position: absolute; left: var(--pad); top: 15%; margin: 0; font-size: clamp(1.1rem, 1.6vw, 1.5rem); font-weight: 600; color: var(--mute); }
+.links { position: absolute; inset: 0; width: 100%; height: 100%; }
+.links path { fill: none; stroke: rgba(238, 234, 226, 0.22); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cols { list-style: none; margin: 0; padding: 0; }
+.col {
+  position: absolute; top: 38%; width: 21%;
+  padding-top: clamp(64px, 12vh, 120px);
+  text-align: center;
+  outline: none;
+  transition: opacity 0.4s;
+}
+.cols[data-active="0"] .col:not([data-on="true"]),
+.cols[data-active="1"] .col:not([data-on="true"]),
+.cols[data-active="2"] .col:not([data-on="true"]),
+.cols[data-active="3"] .col:not([data-on="true"]) { opacity: 0.4; }
+.node {
+  position: absolute; left: 50%; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px;
+  border-radius: 50%; background: var(--paper);
+  box-shadow: 0 0 0 6px rgba(238, 234, 226, 0.08);
+  transition: background-color 0.3s, box-shadow 0.4s var(--ease);
+}
+.col[data-on="true"] .node, .col:focus-visible .node { background: var(--accent); box-shadow: 0 0 0 10px rgba(255, 159, 28, 0.2); }
+.col h3 { margin: 0 0 12px; font-size: clamp(1.3rem, 1.9vw, 2rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; transition: color 0.3s; }
+.col[data-on="true"] h3 { color: var(--accent); }
+.col p { margin: 0 auto; max-width: 30ch; color: var(--mute); font-size: 0.98rem; line-height: 1.55; }
+
+@media (max-width: 899px) {
+  .title { top: 11%; }
+  .links { display: none; }
+  .col { width: 42%; padding-top: 34px; }
+  .col:nth-child(1) { left: 4% !important; top: 25%; }
+  .col:nth-child(2) { left: 54% !important; top: 25%; }
+  .col:nth-child(3) { left: 4% !important; top: 58%; }
+  .col:nth-child(4) { left: 54% !important; top: 58%; }
+  .col h3 { font-size: 1.15rem; }
+  .col p { font-size: 0.82rem; }
+}
+
+:global(.reduced) .title { position: static; margin-bottom: 40px; }
+:global(.reduced) .links { display: none; }
+:global(.reduced) .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; }
+:global(.reduced) .col { position: static; width: auto; left: auto !important; top: auto !important; padding-top: 30px; text-align: left; }
+:global(.reduced) .node { left: 0; margin-left: 0; }
+:global(.reduced) .col p { margin: 0; }

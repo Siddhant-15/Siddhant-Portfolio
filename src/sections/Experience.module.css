@@ -1,0 +1,24 @@
+.exp { position: absolute; inset: 0; }
+.rail { position: absolute; inset: 0; }
+.line { position: absolute; left: 14%; top: 12%; height: 76%; width: 1px; margin-left: -0.5px; background: var(--line); }
+.fill { position: absolute; left: 14%; width: 2px; margin-left: -1px; background: var(--accent); }
+.dot { position: absolute; left: 14%; width: 22px; height: 22px; margin: -11px 0 0 -11px; display: grid; place-items: center; border-radius: 50%; background: var(--ink-1); border: 1px solid var(--line); }
+.dot i { width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+.panels { position: absolute; left: 26%; right: var(--pad); top: 0; bottom: 0; display: grid; align-items: center; }
+.role { grid-area: 1 / 1; max-width: 62ch; }
+.role h3 { margin: 0; font-size: clamp(1.9rem, 4.2vw, 4.4rem); font-weight: 800; letter-spacing: -0.058em; line-height: 0.95; }
+.step { margin: 0 0 22px; display: flex; gap: 14px; align-items: baseline; color: var(--mute); font-weight: 600; font-variant-numeric: tabular-nums; }
+.step em { font-style: normal; color: var(--accent); }
+.company { margin: 22px 0 0; font-size: clamp(1.2rem, 2vw, 2rem); font-weight: 600; letter-spacing: -0.03em; color: var(--accent); }
+.period { margin: 6px 0 0; color: var(--mute); }
+.summary { margin: 22px 0 0; max-width: 40ch; font-size: clamp(1.02rem, 1.35vw, 1.3rem); line-height: 1.5; color: #cfcbc2; }
+.stack { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--mute); font-size: 0.95rem; }
+
+@media (max-width: 899px) {
+  .line, .fill, .dot { left: 7%; }
+  .panels { left: 15%; }
+  .role h3 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+}
+:global(.reduced) .rail { display: none; }
+:global(.reduced) .panels { position: static; display: block; }
+:global(.reduced) .role { margin-bottom: 72px; }

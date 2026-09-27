@@ -1,0 +1,63 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  padding: 0 var(--pad);
+  overflow: hidden;
+}
+
+.headline {
+  position: absolute;
+  left: var(--pad);
+  top: 8%;
+  margin: 0;
+  color: var(--mute);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+/* Host for the WebGL canvas — sizing/perspective now lives in ProjectsScene,
+   this just needs to fill the section so the renderer has real dimensions. */
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Real, focusable links for keyboard/screen-reader/SEO access — the visible
+   cards are canvas pixels and can't carry semantics themselves. */
+.a11yList {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  list-style: none;
+}
+
+.a11yList button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 899px) {
+  .headline {
+    top: 6%;
+  }
+}

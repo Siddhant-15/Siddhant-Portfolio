@@ -1,0 +1,13 @@
+.wrap { position: absolute; inset: 0; display: grid; place-items: center; }
+.kicker { position: absolute; top: 13%; margin: 0; color: var(--mute); font-weight: 600; letter-spacing: 0.03em; }
+.cap { position: absolute; bottom: clamp(48px, 10vh, 110px); left: 50%; transform: translateX(-50%); text-align: center; }
+.word { display: block; font-size: clamp(0.85rem, 1.1vw, 1rem); font-weight: 700; letter-spacing: 0.14em; color: var(--accent); }
+.caption { display: block; margin-top: 10px; max-width: 40ch; color: var(--mute); }
+.mark { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 40px 10px rgba(255, 159, 28, 0.5); opacity: 0; }
+
+@media (max-width: 899px) { .word { letter-spacing: 0.08em; } .caption { font-size: 0.9rem; } }
+:global(.reduced) .wrap { position: relative; inset: auto; display: block; min-height: 60vh; padding: 80px 0; text-align: center; }
+:global(.reduced) .kicker, :global(.reduced) .cap { position: static; transform: none; margin-bottom: 18px; }
+:global(.reduced) .cap { display: none; }
+:global(.reduced) .cap:last-of-type { display: block; }
+:global(.reduced) .mark { display: none; }

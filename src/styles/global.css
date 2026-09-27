@@ -1,0 +1,67 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist/wght-italic.css" screen;
+
+:root {
+  --ink-0: #050505;
+  --ink-1: #080808;
+  --ink-2: #0b0b0b;
+  --paper: #eeeae2;
+  --mute: #9b968c;
+  --dim: #5c584f;
+  --line: rgba(238, 234, 226, 0.12);
+  --accent: #ff9f1c;
+  --pad: clamp(20px, 4.4vw, 64px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--ink-0);
+  color: var(--paper);
+  font-family: "Geist Variable", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "ss01" 1, "cv05" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  cursor: none;
+}
+@media (pointer: coarse) { body { cursor: auto; } }
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; color: inherit; background: none; border: 0; padding: 0; }
+button { cursor: none; }
+@media (pointer: coarse) { button { cursor: pointer; } }
+ul, ol { padding: 0; }
+h1, h2, h3, h4, p { margin: 0; }
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection { background: var(--accent); color: var(--ink-0); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html.reduced, html.reduced * { scroll-behavior: auto !important; }
+html.scroll-locked { overflow: hidden; }
+
+#app { position: relative; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 6px; }

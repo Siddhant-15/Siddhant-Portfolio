@@ -1,0 +1,224 @@
+.tech {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: auto;
+}
+
+.wrap {
+  position: relative;
+
+  width: min(1180px, 92vw);
+  height: min(72vh, 640px);
+
+  pointer-events: auto;
+}
+
+.stage {
+  --tile: 108px;
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(255, 159, 28, 0.06),
+      transparent 40%
+    ),
+    #0b0b0c;
+
+  /*
+   * Critical for pointer interaction.
+   */
+  pointer-events: auto;
+  touch-action: none;
+
+  isolation: isolate;
+}
+
+.tile {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: var(--tile);
+  height: var(--tile);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.03);
+
+  cursor: grab;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  /*
+   * Don't let browser gestures interfere with dragging.
+   */
+  touch-action: none;
+
+  /*
+   * Make the entire tile one pointer target.
+   */
+  pointer-events: auto;
+
+  /*
+   * Physics animation updates transform every frame.
+   */
+  will-change: transform;
+
+  z-index: 1;
+
+  /*
+   * Slightly improve the interaction feel.
+   */
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.tile:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.tile:active {
+  cursor: grabbing;
+
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.icon {
+  font-size: 2.1rem;
+
+  opacity: 0.92;
+
+  /*
+   * The tile receives the pointer event, not the icon.
+   */
+  pointer-events: none;
+
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--mute);
+
+  white-space: nowrap;
+
+  /*
+   * Prevent label from becoming its own interaction target.
+   */
+  pointer-events: none;
+
+  flex-shrink: 0;
+}
+
+.cap {
+  position: absolute;
+
+  left: var(--pad);
+  bottom: clamp(28px, 6vh, 64px);
+
+  margin: 0;
+
+  color: var(--mute);
+
+  pointer-events: none;
+}
+
+/*
+ * ------------------------------------------------------------
+ * MOBILE
+ * ------------------------------------------------------------
+ */
+
+@media (max-width: 899px) {
+  .stage {
+    --tile: 78px;
+  }
+
+  .wrap {
+    width: min(94vw, 1180px);
+    height: min(64vh, 520px);
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .label {
+    font-size: 0.52rem;
+  }
+
+  .tile {
+    gap: 7px;
+    border-radius: 14px;
+  }
+}
+
+/*
+ * ------------------------------------------------------------
+ * REDUCED MOTION
+ * ------------------------------------------------------------
+ */
+
+.stage[data-reduced] {
+  overflow: visible;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-content: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 24px;
+}
+
+.stage[data-reduced] .tile {
+  position: static;
+
+  transform: none !important;
+
+  cursor: default;
+
+  pointer-events: auto;
+}
